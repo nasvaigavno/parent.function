@@ -1,0 +1,11 @@
+old_func = getgenv().original_getvalue_function
+datahandler.GetValue = function(...)
+    result = old_func(...)
+    args = {...}
+    if args[1] == "Inventory" then
+        for unit_index,fake_unit in pairs(fake_units) do
+            result[unit_index] = fake_unit
+        end
+    end
+    return result
+end
